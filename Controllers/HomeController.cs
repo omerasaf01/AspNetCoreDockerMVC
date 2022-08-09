@@ -10,12 +10,19 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult HomePage()
     {
-        return Ok(View("index"));
+        return View("index");
     }
 
-    [HttpGet]
-    public IActionResult ContactPage()
+    [HttpGet("{Path}")]
+    public IActionResult ContactPage(string Path)
     {
-        return Ok(View("contact"));
+        if (Path == "contact")
+        {
+            return View("contact");
+        }
+        else
+        {
+            return View("notfound");
+        }
     }
 }
